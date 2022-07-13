@@ -2,6 +2,6 @@
 const noteRoute = require("/notes");
 const { Router } = require("express");
 const router = Router();
-app.use("/notes", noteRoute);
+router.use("/notes", noteRoute);
 //export notes to router.
 module.exports = router;
