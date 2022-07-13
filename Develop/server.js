@@ -1,31 +1,29 @@
 const express = require('express');
-const { rmSync, fstat } = require('fs');
+const router = require('router');
 //user path if helper needed
 // const path = require('path');
-const db = require('../db.json')
+// const api = require('./db')
+// const { Router } = require
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
-app.get('../db', (req, res) => {
-res.status(200).json(`${req.method} request received.`);
-console.log('Testing...')
-console.log('Testing..')
-console.log('Testing.')
-console.info(`${req.method} request received.`)
+app.get('/', (req, res) => {
+res.sendFile(path.join(__dirname, '/public/notes.html'))
 });
 
-app.post('../db', (req, input) => {
+app.post('./db.json', (req, input) => {
 console.info(`${req.method} request received to add a note`);
 const {title, text} = req.body;
  if (title && text) {
    const addNote = {
      title,
      text,
-     note_id,
+    //  note_id,
    };
    const postNote = JSON.parse(input);
    postNote.push(addNote);
@@ -47,4 +45,4 @@ res.status(201).json(response);
 
     });
 
-app.listen(PORT , () =>console.log('server listening on port:'+`${PORT}`) );
+app.listen(PORT , () =>console.log('server listening on port:'+`http://localhost:${PORT}`) );
