@@ -1,5 +1,5 @@
 //require path to notes
-const noteRoute = require("/notes");
+const noteRoute = require("./noteRoute");
 const { Router } = require("express");
 const router = Router();
 router.use("/notes", noteRoute);
