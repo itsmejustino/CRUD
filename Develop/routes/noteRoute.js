@@ -1,6 +1,6 @@
 const fs = require("fs");
 const { Router } = require("express");
-const {v4:uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 const router = Router();
 
 //gets route to /db json and then reads the data from the file
@@ -9,11 +9,9 @@ router.get("/", (req, res) => {
   console.log("Testing...");
   console.info(`${req.method} request received.`);
   fs.readFile("./db/db.json", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(JSON.parse(data));
-    }
+    err
+      ? console.log(err)
+      : res.json(JSON.parse(data)) + console.log("data retrieved from api.");
   });
 });
 
@@ -27,48 +25,39 @@ router.post("/", (req, res) => {
       text,
       id: uuidv4(),
     };
-    //posts input to JSON
-    // const postNote = parse();
-    //pushes to the array.
-    // postNote.push(addNote);
-    //writes note to db.json
 
     fs.readFile("./db/db.json", (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        const parsedData = JSON.parse(data);
-        parsedData.push(addNote);
-        console.log(parsedData);
-
-        fs.writeFile("./db/db.json", JSON.stringify(parsedData), (err) => {
-          if (err) {
-            console.log(err);
-          } else {
-            res.send("success!");
-            console.log("Added a note! =)");
-          }
-        });
-      }
+      const parsedData = JSON.parse(data)
+      // let stringedData = JSON.stringify(parsedData);
+      err ? console.log(err)
+        : parsedData.push(addNote);
+      fs.writeFile("./db/db.json", JSON.stringify(parsedData), (err) => {
+        err
+          ? console.log(err)
+          : res.send("success!") + console.log("Added a note! =)");
+      });
     });
 
     //handles error response message to terminal to indicate a successful posted note.
-    
   } else {
-    res.status(500).json("Error in pse posting note! ='( ");
+    res.status(500).json("Error in posting note! ='( ");
   }
 });
 
-router.delete("/", (req, res) => {
-  // res.status(200).json(`${req.method} request received.`);
-  console.log("Testing...");
-  console.info(`${req.method} request received.`);
+router.delete("/:id", (req, res) => {
   fs.readFile("./db/db.json", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(JSON.parse(data));
-    }
+    const savedNotes = JSON.parse(data);
+    const dbId = req.params.id;
+    console.log(dbId);
+    const datatoReplace = savedNotes.filter((note) => note.id === dbId);
+    // let removedData = ;
+    err
+      ? console.log(err)
+      : fs.writeFile("./db/db.json", JSON.stringify(datatoReplace) , (err) => {
+        err
+          ? console.log(err)
+          : res.send("success!") + console.log("Deleted a note! =)") + console.log("This note was deleted:" + JSON.stringify(datatoReplace));
+      });
   });
 });
 
