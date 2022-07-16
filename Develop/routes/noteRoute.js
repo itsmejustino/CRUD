@@ -1,11 +1,11 @@
 const fs = require("fs");
 const { Router } = require("express");
+//requires middleware for unique id
 const { v4: uuidv4 } = require("uuid");
 const router = Router();
 
-//gets route to /db json and then reads the data from the file
+//gets route to / json and then reads the data from the file
 router.get("/", (req, res) => {
-  // res.status(200).json(`${req.method} request received.`);
   console.log("Testing...");
   console.info(`${req.method} request received.`);
   fs.readFile("./db/db.json", (err, data) => {
@@ -19,16 +19,18 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   console.log(`${req.method} request received to add a note`);
   const { title, text } = req.body;
+  //checks if there is title and text in request body. 
   if (title && text) {
     const addNote = {
       title,
       text,
+      //adds random id to body
       id: uuidv4(),
     };
 
     fs.readFile("./db/db.json", (err, data) => {
       const parsedData = JSON.parse(data)
-      // let stringedData = JSON.stringify(parsedData);
+      
       err ? console.log(err)
         : parsedData.push(addNote);
       fs.writeFile("./db/db.json", JSON.stringify(parsedData), (err) => {
@@ -40,7 +42,7 @@ router.post("/", (req, res) => {
 
     //handles error response message to terminal to indicate a successful posted note.
   } else {
-    res.status(500).json("Error in posting note! ='( ");
+    res.status(500).json("Error posting note! ='( ");
   }
 });
 
@@ -49,8 +51,7 @@ router.delete("/:id", (req, res) => {
     const savedNotes = JSON.parse(data);
     const dbId = req.params.id;
     console.log(dbId);
-    const datatoReplace = savedNotes.filter((note) => note.id === dbId);
-    // let removedData = ;
+    const datatoReplace = savedNotes.filter((note) => note.id !== dbId);
     err
       ? console.log(err)
       : fs.writeFile("./db/db.json", JSON.stringify(datatoReplace) , (err) => {
