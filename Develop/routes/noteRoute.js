@@ -51,10 +51,9 @@ router.delete("/:id", (req, res) => {
     const savedNotes = JSON.parse(data);
     const dbId = req.params.id;
     console.log(dbId);
-    const datatoReplace = savedNotes.filter((note) => note.id !== dbId);
     err
       ? console.log(err)
-      : fs.writeFile("./db/db.json", JSON.stringify(datatoReplace) , (err) => {
+      : fs.writeFile("./db/db.json", JSON.stringify(savedNotes.filter((note) => note.id !== dbId)) , (err) => {
         err
           ? console.log(err)
           : res.send("success!") + console.log("Deleted a note! =)") + console.log("This note was deleted:" + JSON.stringify(datatoReplace));
