@@ -2,6 +2,7 @@ const { urlencoded } = require("express");
 const express = require("express");
 const api = require("./routes");
 
+//set port number and import express to the app.
 const app = express();
 const PORT = 3001;
 

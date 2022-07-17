@@ -27,12 +27,13 @@ router.post("/", (req, res) => {
       //adds random id to body
       id: uuidv4(),
     };
-
+    //read file from db
     fs.readFile("./db/db.json", (err, data) => {
       const parsedData = JSON.parse(data)
       
       err ? console.log(err)
         : parsedData.push(addNote);
+        //write over db file with new data 
       fs.writeFile("./db/db.json", JSON.stringify(parsedData), (err) => {
         err
           ? console.log(err)
