@@ -15,7 +15,7 @@
 ## Install-Instructions 
   npm i  
 ## Usage-Info
- Visit the deployed site at : https://git.heroku.com/my-first-crud.git
+ Visit the deployed site at : https://cruddy-notes.herokuapp.com/
 
 ## Contribute
   If you would like to contribute please send a pull request.
