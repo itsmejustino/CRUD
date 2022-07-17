@@ -15,7 +15,8 @@
 ## Install-Instructions 
   npm i  
 ## Usage-Info
-  After installing dependencies invoke the program by typing 'node server.js'. 
+ Visit the deployed site at : https://git.heroku.com/my-first-crud.git
+
 ## Contribute
   If you would like to contribute please send a pull request.
 
