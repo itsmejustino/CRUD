@@ -16,6 +16,10 @@
   npm i  
 ## Usage-Info
  Visit the deployed site at : https://cruddy-notes.herokuapp.com/
+## Demo
+ ![demo 1](https://github.com/itsmejustino/CRUD/blob/main/public/assets/pics/demo-crud.PNG?raw=true)
+
+![demo 2](https://github.com/itsmejustino/CRUD/blob/main/public/assets/pics/demo2-crud.PNG?raw=true)
 
 ## Contribute
   If you would like to contribute please send a pull request.
