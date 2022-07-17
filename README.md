@@ -1,4 +1,4 @@
-# Team Generator<br>
+# Cruddy Notes<br>
 ## Table of Contents <br>
 [Description](#description)<br>
 [License](#license)<br>
@@ -9,7 +9,7 @@
 [Tests](#tests)<br>
 
 ## Description 
-  This program is a note taking app that utilizes the CRUD functions. Utlizes middleware uuidv4 to generate a unique id. 
+  This program is a note taking app that utilizes the CRUD operations. Utlizes middleware uuidv4 to generate a unique id. 
 ## License
   [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ## Install-Instructions 
