@@ -9,11 +9,11 @@
 [Tests](#tests)<br>
 
 ## Description 
-  This program is a note taking app that utilizes the CRUD operations. Utlizes middleware uuidv4 to generate a unique id. 
+  This program is a note taking app that utilizes the CRUD operations. Utlizes middleware uuidv4 to generate a unique id for each note. 
 ## License
   [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ## Install-Instructions 
-  npm i  
+  After forking the repository import the necessary dependencies with npm i.  
 ## Usage-Info
  Visit the deployed site at : https://cruddy-notes.herokuapp.com/
 ## Demo
